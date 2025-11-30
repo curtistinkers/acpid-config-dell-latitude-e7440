@@ -1,3 +1,19 @@
+acpid-config-dell-latitude-e7440 (0.4.0) unstable; urgency=medium
+
+  * Modified backlight event script for better portability.
+    - Replaced direct echo commands with printf for writing brightness values.
+    - Ensured proper formatting of brightness values to avoid potential issues
+      with different shell environments.
+  * Added exit codes to backlight event script for better error handling.
+  * Added information output in backlight event script to display current settings.
+  * Added exit codes and usage instructions to lid event script.
+  * Converted lid event script to use printf for writing brightness values
+    for improved portability.
+  * Ensured consistent use of quotes around variable references in both scripts.
+  * Used variables to increase readability and maintainability of scripts.
+
+ -- curtistinkers <curtistinkers.commit@gmail.com> Sun, 30 Nov 2025 21:51:31 +0000
+
 acpid-config-dell-latitude-e7440 (0.3.2) unstable; urgency=low
 
   * Updated lid event script to set default brightness to 50% if no
