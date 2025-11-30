@@ -38,7 +38,7 @@ jobs:
       - name: Copy files to keep extraneous files out of the package
         id: copy_debian_pkg_files
         run: |
-          cp -Rf REPO/usr REPO/DEBIAN PKG_SOURCE
+          cp -Rf REPO/etc REPO/DEBIAN PKG_SOURCE
 
       - name: Build .deb file
         id: build_deb_package
