@@ -1,4 +1,11 @@
-acpid-config-dell-latitude-e7440 (0.2.1) unstable; urgency=medium
+acpid-config-dell-latitude-e7440 (0.3.0) unstable; urgency=low
+
+  * Added a postinstall script to restart acpid service after
+    package installation.
+
+ -- curtistinkers <curtistinkers.commit@gmail.com> Sun, 30 Nov 2025 20:05:32 +0000
+
+acpid-config-dell-latitude-e7440 (0.2.1) unstable; urgency=high
 
   * Fixed lid_close handler filename and added exit codes to lid event script.
   * Added exit codes and usage instructions to backlight event script.
@@ -13,7 +20,7 @@ acpid-config-dell-latitude-e7440 (0.2.0) unstable; urgency=medium
 
  -- curtistinkers <curtistinkers.commit@gmail.com> Sun, 30 Nov 2025 19:13:22 +0000
 
-acpid-config-dell-latitude-e7440 (0.1.1) unstable; urgency=medium
+acpid-config-dell-latitude-e7440 (0.1.1) unstable; urgency=high
 
   * Fixed file permissions on backlight control script to be executable.
 

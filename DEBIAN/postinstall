@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Restart acpid service
+echo "Restarting acpid service..."
+
+systemctl restart acpid
+RETURN_CODE=$?
+
+if [ "${RETURN_CODE}" -eq 0 ]; then
+    echo "acpid service restarted successfully."
+else
+    echo "Failed to restart acpid service." >&2
+    exit 1
+fi
+
+exit 0
