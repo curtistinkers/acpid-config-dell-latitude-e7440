@@ -1,3 +1,9 @@
+acpid-config-dell-latitude-e7440 (0.3.1) unstable; urgency=low
+
+  * Corrected the postinstall script name to postinst.
+
+ -- curtistinkers <curtistinkers.commit@gmail.com> Sun, 30 Nov 2025 20:16:38 +0000
+
 acpid-config-dell-latitude-e7440 (0.3.0) unstable; urgency=low
 
   * Added a postinstall script to restart acpid service after
