@@ -1,3 +1,11 @@
+acpid-config-dell-latitude-e7440 (0.2.0) unstable; urgency=medium
+
+  * Added lid close and open event handling to manage backlight state.
+    - On lid close, the backlight is turned off.
+    - On lid open, the backlight is restored to the previous brightness level.
+
+ -- curtistinkers <curtistinkers.commit@gmail.com> Sun, 30 Nov 2025 19:13:22 +0000
+
 acpid-config-dell-latitude-e7440 (0.1.1) unstable; urgency=medium
 
   * Fixed file permissions on backlight control script to be executable.
