@@ -5,7 +5,7 @@
 # Dell Latitude E7440 has a max brightness of 937
 
 bl_dev=/sys/class/backlight/intel_backlight
-step=100
+step=$(( $(cat ${bl_dev}/max_brightness) / 10 ))
 
 case $1 in
   -) echo $(($(< ${bl_dev}/brightness) - step)) > ${bl_dev}/brightness; exit 0;;
