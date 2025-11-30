@@ -1,30 +1,37 @@
 #!/usr/bin/env sh
 
-# Lid events handler script for Dell Latitude E7440
-#
-# Dell Latitude E7440 has a max brightness of 937
+# Lid events handler script for Intel backlight devices
 
-bl_dev=/sys/class/backlight/intel_backlight
+DEVICE=/sys/class/backlight/intel_backlight
+MAX_BRIGHTNESS=$(cat "${DEVICE}/max_brightness")
+SAVE_FILE=/run/backlight_level_save
 
 case $1 in
   open)
     # Get previous brightness and wake up the display
-    if [ -f /run/backlight_level_save ]; then
-      cat /run/backlight_level_save > ${bl_dev}/brightness
-      rm /run/backlight_level_save
+    if [ -f "${SAVE_FILE}" ]; then
+      cat "${SAVE_FILE}" > "${DEVICE}/brightness"
+      rm "${SAVE_FILE}"
     else
-      echo $(( $(cat ${bl_dev}/max_brightness) / 2)) > ${bl_dev}/brightness
+      printf "%d" $(( MAX_BRIGHTNESS / 2)) > "${DEVICE}/brightness"
     fi
     exit 0
     ;;
   close)
     # Save current brightness and turn off the display
-    cat ${bl_dev}/brightness > /run/backlight_level_save
-    echo 0 > ${bl_dev}/brightness
+    cat "${DEVICE}/brightness" > "${SAVE_FILE}"
+    printf "%d" 0 > "${DEVICE}/brightness"
     exit 0
     ;;
   *)
-    echo "Usage: $0 {open|close}"
+    printf "\n"
+    printf "Lid handler script"
+    printf "\n\n"
+    printf "Usage: %s {open|close}\n" "$0"
+    printf "\n"
+    printf "\topen\tRestore backlight brightness on lid open\n"
+    printf "\tclose\tTurn off backlight brightness on lid close\n"
+    printf "\n"
     exit 1
     ;;
 esac
