@@ -1,0 +1,6 @@
+acpid-config-dell-latitude-e7440 (0.1.0) unstable; urgency=medium
+
+  * Initial release of acpid-config-dell-latitude-e7440 package.
+      - Added backlight controls
+
+ -- curtistinkers <curtistinkers.commit@gmail.com> Sun, 30 Nov 2025 18:36:13 +0000

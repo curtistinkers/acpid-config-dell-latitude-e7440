@@ -1,0 +1,12 @@
+Package: acpid-config-dell-latitude-e7440
+Architecture: all
+Maintainer: curtistinkers <curtistinkers.commit@gmail.com>
+Homepage: https://github.com/curtistinkers/acpid-config-dell-latitude-e7440
+Version: 0.1.0
+Section: misc
+Priority: optional
+Depends: acpid
+Description: ACPID configuration for Dell Latitude E7440
+ This package provides a custom acpid configuration to facilitate the use of a
+ Dell Latitude E7440 laptop as a server, enabling better power management and
+ backlight control functionality.
