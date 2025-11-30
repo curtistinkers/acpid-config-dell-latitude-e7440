@@ -12,6 +12,7 @@
         "dpkg",
         "LNXCPU",
         "PBTN",
+        "postinst",
         "SBTN",
         "softprops",
         "VOLDN",
