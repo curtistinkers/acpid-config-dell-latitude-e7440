@@ -1,6 +1,7 @@
 acpid-config-dell-latitude-e7440 (0.2.1) unstable; urgency=medium
 
   * Fixed lid_close handler filename and added exit codes to lid event script.
+  * Added exit codes and usage instructions to backlight event script.
 
  -- curtistinkers <curtistinkers.commit@gmail.com> Sun, 30 Nov 2025 19:44:41 +0000
 
