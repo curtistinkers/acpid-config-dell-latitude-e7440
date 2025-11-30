@@ -1,17 +1,53 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-# ACPI backlight handler script for Dell Latitude E7440
-#
-# Dell Latitude E7440 has a max brightness of 937
+# ACPI backlight handler script for Intel backlight devices
 
-bl_dev=/sys/class/backlight/intel_backlight
-step=$(( $(cat ${bl_dev}/max_brightness) / 10 ))
+DEVICE=/sys/class/backlight/intel_backlight
+CURRENT_BRIGHTNESS=$(cat "${DEVICE}/brightness")
+MAX_BRIGHTNESS=$(cat "${DEVICE}/max_brightness")
+STEP=$(( MAX_BRIGHTNESS / 10 ))
 
 case $1 in
-  -) echo $(($(< ${bl_dev}/brightness) - step)) > ${bl_dev}/brightness; exit 0;;
-  +) echo $(($(< ${bl_dev}/brightness) + step)) > ${bl_dev}/brightness; exit 0;;
-  *)
-    echo "Usage: $0 {+|-}"
+  -|down)
+    NEW_BRIGHTNESS=$(( CURRENT_BRIGHTNESS - STEP ))
+
+    if [ "${NEW_BRIGHTNESS}" -lt 0 ]; then
+      NEW_BRIGHTNESS=0
+    fi
+    printf "%d" "${NEW_BRIGHTNESS}" > "${DEVICE}/brightness"
+    exit 0
+    ;;
+  +|up)
+    NEW_BRIGHTNESS=$(( CURRENT_BRIGHTNESS + STEP ))
+
+    if [ "${NEW_BRIGHTNESS}" -gt "${MAX_BRIGHTNESS}" ]; then
+      NEW_BRIGHTNESS="${MAX_BRIGHTNESS}"
+    fi
+    printf "%d" "${NEW_BRIGHTNESS}" > "${DEVICE}/brightness"
+    exit 0
+    ;;
+  i|info)
+    printf "\n"
+    printf "Current backlight status:"
+    printf "\n\n"
+    printf "    Device path:\t%s\n" "${DEVICE}"
+    printf "    Current brightness:\t%s\n" "${CURRENT_BRIGHTNESS}"
+    printf "    Step value:\t\t%s\n" "${STEP}"
+    printf "    Max brightness:\t%s\n" "${MAX_BRIGHTNESS}"
+    printf "\n"
+    exit 3
+    ;;
+  "?"|help|*)
+    printf "\n"
+    printf "Backlight handler script"
+    printf "\n\n"
+    printf "Usage: %s {+|-|info|help}" "$0"
+    printf "\n\n"
+    printf "\t- | down\tDecrease backlight brightness by 10%%\n"
+    printf "\t+ | up\t\tIncrease backlight brightness by 10%%\n"
+    printf "\ti | info\tShow backlight information\n"
+    printf "\t? | help\tShow this help message\n"
+    printf "\n"
     exit 1
     ;;
 esac
