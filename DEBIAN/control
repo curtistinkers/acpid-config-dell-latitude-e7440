@@ -2,7 +2,7 @@ Package: acpid-config-dell-latitude-e7440
 Architecture: all
 Maintainer: curtistinkers <curtistinkers.commit@gmail.com>
 Homepage: https://github.com/curtistinkers/acpid-config-dell-latitude-e7440
-Version: 0.2.0
+Version: 0.2.1
 Section: misc
 Priority: optional
 Depends: acpid
