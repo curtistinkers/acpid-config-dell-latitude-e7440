@@ -12,12 +12,18 @@ case $1 in
     if [ -f /run/brightness_save ]; then
       cat /run/brightness_save > ${bl_dev}/brightness
     else
-      echo 400 > ${bl_dev}/brightness
+      echo 500 > ${bl_dev}/brightness
     fi
+    exit 0
     ;;
   close)
     # Save current brightness and turn off the display
     cat ${bl_dev}/brightness > /run/brightness_save
     echo 0 > ${bl_dev}/brightness
+    exit 0
+    ;;
+  *)
+    echo "Usage: $0 {open|close}"
+    exit 1
     ;;
 esac
