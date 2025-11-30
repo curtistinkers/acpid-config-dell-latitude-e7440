@@ -1,3 +1,12 @@
+acpid-config-dell-latitude-e7440 (0.3.2) unstable; urgency=low
+
+  * Updated lid event script to set default brightness to 50% if no
+    previous brightness level is saved.
+  * Updated backlight event script to step brightness by 10% increments.
+  * Improved portability of backlight handler by switching from bash to sh.
+
+ -- curtistinkers <curtistinkers.commit@gmail.com> Sun, 30 Nov 2025 20:54:30 +0000
+
 acpid-config-dell-latitude-e7440 (0.3.1) unstable; urgency=low
 
   * Corrected the postinstall script name to postinst.
