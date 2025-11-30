@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Lid events handler script for Dell Latitude E7440
 #
@@ -9,16 +9,17 @@ bl_dev=/sys/class/backlight/intel_backlight
 case $1 in
   open)
     # Get previous brightness and wake up the display
-    if [ -f /run/brightness_save ]; then
-      cat /run/brightness_save > ${bl_dev}/brightness
+    if [ -f /run/backlight_level_save ]; then
+      cat /run/backlight_level_save > ${bl_dev}/brightness
+      rm /run/backlight_level_save
     else
-      echo 500 > ${bl_dev}/brightness
+      echo $(( $(cat ${bl_dev}/max_brightness) / 2)) > ${bl_dev}/brightness
     fi
     exit 0
     ;;
   close)
     # Save current brightness and turn off the display
-    cat ${bl_dev}/brightness > /run/brightness_save
+    cat ${bl_dev}/brightness > /run/backlight_level_save
     echo 0 > ${bl_dev}/brightness
     exit 0
     ;;
